@@ -20,9 +20,9 @@ It is meant to configure package initialization and early graphical interface tw
 #+begin_src emacs-lisp
   ;;; early-init.el --- Early initialization -*- lexical-binding: t; buffer-read-only: t; no-byte-compile: t -*-
 
-  ;; Author: Andrey Listopadov
+  ;; Author: Nicolas CHAPON
   ;; Keywords: literate programming, Emacs configuration
-  ;; Homepage: https://gitlab.com/andreyorst/dotfiles/-/tree/master/.config/emacs
+  ;; Homepage:
 
   ;;; Commentary:
   ;; Emacs config.
@@ -141,9 +141,9 @@ Main GNU Emacs init file.
 #+begin_src emacs-lisp
   ;;; init.el --- Emacs main configuration file -*- lexical-binding: t; buffer-read-only: t; no-byte-compile: t -*-
 
-  ;; Author: Andrey Listopadov
+  ;; Author: Nicolas CHAPON
   ;; Keywords: literate programming, Emacs configuration
-  ;; Homepage: https://gitlab.com/andreyorst/dotfiles/-/tree/master/.config/emacs
+  ;; Homepage:
 
   ;;; Commentary:
   ;; Emacs config.
@@ -786,8 +786,8 @@ Try the new Hype completion System
 #+end_src
 **** Embark
 
-[[https://github.com/oantolin/embark][Embark]] Emacs Minibuffer Actions Rooted in Key Maps 
-     
+[[https://github.com/oantolin/embark][Embark]] Emacs Minibuffer Actions Rooted in Key Maps
+
 #+begin_src emacs-lisp
   (use-package embark
     :bind
@@ -840,7 +840,7 @@ Magit a git porcelain inside Emacs !
            ("C-<f6>" . magit-log-buffer-file)))
 #+end_src
 
-    
+
 *** Ediff
 **** Ignore white space
  From : [[https://www.emacswiki.org/emacs/EdiffMode]] :
@@ -913,7 +913,11 @@ Expand region increases the selected region by semantic units. Just keep pressin
 
 
 *** Yasnippet
+*** RipGrep
 
+#+begin_src emacs-lisp
+
+#+end_src
 
 ** Programming
 ** Org

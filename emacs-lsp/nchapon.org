@@ -1722,25 +1722,6 @@ From : https://github.com/tecosaur/emacs-config/blob/master/config.org#translate
 #+end_src
 
 
-** Magit -> <F6>
-
-#+BEGIN_QUOTE
-Magit a git porcelain inside Emacs !
-
-[[https://github.com/magit/magit]]
-#+END_QUOTE
-
-#+begin_src emacs-lisp
-  (use-package magit
-
-    :init
-    (when (getenv "GIT_EXECUTABLE")
-      (setq magit-git-executable (getenv "GIT_EXECUTABLE")))
-
-    :bind (("C-x g" . magit-status)
-           ("<f6>" . magit-status )
-           ("C-<f6>" . magit-log-buffer-file)))
-#+end_src
 ** Shells
 *** Eshell
     Mainly come from [[https://github.com/howardabrams/dot-files/blob/master/emacs-eshell.org]]

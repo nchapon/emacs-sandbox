@@ -1,8 +1,8 @@
 ;;; early-init.el --- Early initialization -*- lexical-binding: t; buffer-read-only: t; no-byte-compile: t -*-
 
-;; Author: Andrey Listopadov
+;; Author: Nicolas CHAPON
 ;; Keywords: literate programming, Emacs configuration
-;; Homepage: https://gitlab.com/andreyorst/dotfiles/-/tree/master/.config/emacs
+;; Homepage:
 
 ;;; Commentary:
 ;; Emacs config.

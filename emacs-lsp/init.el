@@ -1,8 +1,8 @@
 ;;; init.el --- Emacs main configuration file -*- lexical-binding: t; buffer-read-only: t; no-byte-compile: t -*-
 
-;; Author: Andrey Listopadov
+;; Author: Nicolas CHAPON
 ;; Keywords: literate programming, Emacs configuration
-;; Homepage: https://gitlab.com/andreyorst/dotfiles/-/tree/master/.config/emacs
+;; Homepage:
 
 ;;; Commentary:
 ;; Emacs config.
@@ -514,6 +514,8 @@
     (global-undo-tree-mode)
     (setq undo-tree-visualizer-timestamps t)
     (setq undo-tree-visualizer-diff t)))
+
+
 
 ;; test
   (provide 'init)
