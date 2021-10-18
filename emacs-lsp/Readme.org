@@ -865,7 +865,23 @@ Magit a git porcelain inside Emacs !
  (setq ediff-window-setup-function 'ediff-setup-windows-plain)
  #+end_src
 *** Projectile
-*** Expand region
+
+[[https://github.com/bbatsov/projectile][Projectile]] Project interaction library for emacs.
+
+#+begin_src emacs-lisp
+  (use-package projectile
+    :custom
+    (projectile-sort-order 'recently-active)
+    :config
+    (projectile-global-mode)
+    :init
+      (setq projectile-enable-caching t)
+      ;; Custom mode line
+      (setq projectile-mode-line '(:eval (format " Ⓟ[%s]" (projectile-project-name))))
+    :bind-keymap ("C-c p" . projectile-command-map))
+#+end_src
+
+**** Expand region
 #+BEGIN_QUOTE
 Expand region increases the selected region by semantic units. Just keep pressing the key until it selects what you want.
 
@@ -881,7 +897,7 @@ Expand region increases the selected region by semantic units. Just keep pressin
    ("C-=" . er/expand-region))
  #+end_src
 
-*** Multiple Cursors
+**** Multiple Cursors
 
  [[https://github.com/magnars/multiple-cursors.el][multiple-cursors.el]] This package can create several cursors to all do the same things.
 
@@ -898,8 +914,8 @@ Expand region increases the selected region by semantic units. Just keep pressin
       ("C-*" .  mc/mark-all-dwim)))
  #+end_src
 
-*** Treemacs
-*** Undo Tree
+**** Treemacs
+**** Undo Tree
  This lets you use =C-x u= (=undo-tree-visualize=)
  #+begin_src emacs-lisp
    (use-package undo-tree
@@ -912,8 +928,8 @@ Expand region increases the selected region by semantic units. Just keep pressin
  #+end_src
 
 
-*** Yasnippet
-*** RipGrep
+**** Yasnippet
+**** RipGrep
 
 #+begin_src emacs-lisp
 

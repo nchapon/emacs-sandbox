@@ -492,6 +492,17 @@
 (setq ediff-split-window-function 'split-window-horizontally)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
+(use-package projectile
+  :custom
+  (projectile-sort-order 'recently-active)
+  :config
+  (projectile-global-mode)
+  :init
+    (setq projectile-enable-caching t)
+    ;; Custom mode line
+    (setq projectile-mode-line '(:eval (format " Ⓟ[%s]" (projectile-project-name))))
+  :bind-keymap ("C-c p" . projectile-command-map))
+
 (use-package expand-region
   :bind
   ("C-=" . er/expand-region))
