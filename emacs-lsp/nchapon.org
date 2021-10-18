@@ -271,26 +271,6 @@ Auto save buffers when buffers loose focus, disabled for remote buffers.
     :ensure)
 #+end_src
 
-** Projectile
-#+begin_src emacs-lisp
-  (use-package projectile
-    :diminish projectile-mode
-
-    :init
-    (setq projectile-enable-caching t)
-    ;; Custom mode line
-    (setq projectile-mode-line '(:eval (format " Ⓟ[%s]" (projectile-project-name))))
-    :bind-keymap ("C-c p" . projectile-command-map)
-    :config
-    ;;(setq projectile-keymap-prefix (kbd "C-c p"))
-    (add-to-list 'projectile-globally-ignored-directories "elpa")
-    (add-to-list 'projectile-globally-ignored-directories "target")
-    (add-to-list 'projectile-globally-ignored-directories ".cache")
-    (add-to-list 'projectile-globally-ignored-directories "image-dired")
-    (add-to-list 'projectile-globally-ignored-files "node_modules")
-    (projectile-global-mode))
-#+end_src
-
 ** Windows
 *** Ace Window
 Perhaps I need to use =switch-window= (Cf  https://github.com/dimitri/switch-window)

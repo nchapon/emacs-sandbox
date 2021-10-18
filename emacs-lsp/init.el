@@ -233,7 +233,6 @@
 
 (use-package recentf
   :straight nil
-  :hook (after-init . recentf-mode)
   :custom
   (recentf-auto-cleanup "09:00am")
   (recentf-max-saved-items 300)
@@ -487,10 +486,16 @@
          ("<f6>" . magit-status )
          ("C-<f6>" . magit-log-buffer-file)))
 
-(setq ediff-diff-options "-w")
-
-(setq ediff-split-window-function 'split-window-horizontally)
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+(use-package ediff
+  :straight nil
+  :custom
+   ;; Ediff should be opened in selected frame and split window horizontally
+  (ediff-window-setup-function 'ediff-setup-windows-plain)
+  (ediff-split-window-function 'split-window-horizontally)
+  (ediff-diff-options "-w")
+  :config
+  ;; Pour éviter des ouvertures de frames intempestives
+  (advice-add 'ediff-window-display-p :override 'ignore))
 
 (use-package projectile
   :custom
@@ -525,8 +530,6 @@
     (global-undo-tree-mode)
     (setq undo-tree-visualizer-timestamps t)
     (setq undo-tree-visualizer-diff t)))
-
-
 
 ;; test
   (provide 'init)

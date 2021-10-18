@@ -509,7 +509,6 @@ Uniquify file path to ensure buffer name uniqueness
  #+begin_src emacs-lisp
    (use-package recentf
      :straight nil
-     :hook (after-init . recentf-mode)
      :custom
      (recentf-auto-cleanup "09:00am")
      (recentf-max-saved-items 300)
@@ -842,28 +841,31 @@ Magit a git porcelain inside Emacs !
 
 
 *** Ediff
-**** Ignore white space
- From : [[https://www.emacswiki.org/emacs/EdiffMode]] :
+
+ From : [[https://www.emacswiki.org/emacs/EdiffMode]]
 
  You can ignore whitespace or case sensitivity in two ways:
+- Interactively, on the fly:
+   - Whitespace sensitivity – Toggle with =##= (=ediff-toggle-skip-similar=).
+   - Case sensitivity – Toggle with =#c= (=ediff-toggle-ignore-case=). This assumes that you’ve loaded library Lisp:ediff+.el and that you are using `diff(1)’ as ‘ediff-diff-program’. (Toggling case-sensitivity is available in vanilla GNU Emacs 22, so Lisp:ediff+.el is mainly useful for older Emacs versions.)
+ - Persistently: Customize option =ediff-diff-options=. This assumes that you are using `diff(1)’ as ‘ediff-diff-program’.
+    - Whitespace insensitivity – Include ‘-w’ in =ediff-diff-options=.
+    - Case insensitivity – Include ‘-i’ in =ediff-diff-options=.
 
-  - Interactively, on the fly:
-    - Whitespace sensitivity – Toggle with =##= (=ediff-toggle-skip-similar=).
-    - Case sensitivity – Toggle with =#c= (=ediff-toggle-ignore-case=). This assumes that you’ve loaded library Lisp:ediff+.el and that you are using `diff(1)’ as ‘ediff-diff-program’. (Toggling case-sensitivity is available in vanilla GNU Emacs 22, so Lisp:ediff+.el is mainly useful for older Emacs versions.)
-  - Persistently: Customize option =ediff-diff-options=. This assumes that you are using `diff(1)’ as ‘ediff-diff-program’.
-     - Whitespace insensitivity – Include ‘-w’ in =ediff-diff-options=.
-     - Case insensitivity – Include ‘-i’ in =ediff-diff-options=.
- #+begin_src emacs-lisp
- (setq ediff-diff-options "-w")
- #+end_src
-**** Ediff operate on selected frame
+#+begin_src emacs-lisp
+  (use-package ediff
+    :straight nil
+    :custom
+     ;; Ediff should be opened in selected frame and split window horizontally
+    (ediff-window-setup-function 'ediff-setup-windows-plain)
+    (ediff-split-window-function 'split-window-horizontally)
+    (ediff-diff-options "-w")
+    :config
+    ;; Pour éviter des ouvertures de frames intempestives
+    (advice-add 'ediff-window-display-p :override 'ignore))
+#+end_src
 
- Ediff should be opened in selected frame and split window horizontally
 
- #+begin_src emacs-lisp
- (setq ediff-split-window-function 'split-window-horizontally)
- (setq ediff-window-setup-function 'ediff-setup-windows-plain)
- #+end_src
 *** Projectile
 
 [[https://github.com/bbatsov/projectile][Projectile]] Project interaction library for emacs.
@@ -929,12 +931,6 @@ Expand region increases the selected region by semantic units. Just keep pressin
 
 
 **** Yasnippet
-**** RipGrep
-
-#+begin_src emacs-lisp
-
-#+end_src
-
 ** Programming
 ** Org
 ** =(provide 'init)=
