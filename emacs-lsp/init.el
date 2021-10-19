@@ -252,6 +252,8 @@
 ;; When buffer is closed, saves the cursor location
 (save-place-mode 1)
 
+(recentf-mode 1)
+
 ;; Set history-length longer
 (setq-default history-length 500)
 
@@ -530,6 +532,33 @@
     (global-undo-tree-mode)
     (setq undo-tree-visualizer-timestamps t)
     (setq undo-tree-visualizer-diff t)))
+
+(use-package dockerfile-mode
+  :mode "Dockerfile.*\\'")
+
+(use-package lua-mode
+  :ensure t
+  :mode "\\.lua\\'")
+
+(use-package markdown-mode
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'"       . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :config
+  ;; Process Markdown with Pandoc, using GitHub stylesheet for nice output
+  (let ((stylesheet (expand-file-name
+                     (locate-user-emacs-file "etc/pandoc.css"))))
+    (setq markdown-command
+          (mapconcat #'shell-quote-argument
+                     `("pandoc" "--toc" "--section-divs"
+                       "--css" ,(concat "file://" stylesheet)
+                       "--standalone" "-f" "markdown" "-t" "html5")
+                     " "))))
+
+(use-package markdown-toc
+     :after markdown-mode)
+
+
 
 ;; test
   (provide 'init)

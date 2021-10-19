@@ -2326,11 +2326,6 @@ Before you need to install Java and Clojure
 
 
 
-** Docker
-#+begin_src emacs-lisp
-  (use-package dockerfile-mode
-    :mode "Dockerfile.*\\'")
-#+end_src
 ** Go
 Go mode needs some go tools
 *** Go Imports
@@ -2424,12 +2419,6 @@ Then we can setup Emacs go mode
       (end-of-line-compile))
 
 #+end_src
-** Lua
-#+begin_src emacs-lisp
-(use-package lua-mode
-  :ensure t
-  :mode "\\.lua\\'")
-#+end_src
 ** Python
 
 #+begin_src emacs-lisp
@@ -2438,31 +2427,6 @@ Then we can setup Emacs go mode
     :mode ("\\.py\\'")
     :custom
     (python-shell-interpreter "python3"))
-#+end_src
-
-** Markdown
-   GitHub Flavored Markdown by default for README.md files.
-#+begin_src emacs-lisp
-  (use-package markdown-mode
-    :mode (("README\\.md\\'" . gfm-mode)
-           ("\\.md\\'"       . markdown-mode)
-           ("\\.markdown\\'" . markdown-mode))
-    :config
-    ;; Process Markdown with Pandoc, using GitHub stylesheet for nice output
-    (let ((stylesheet (expand-file-name
-                       (locate-user-emacs-file "etc/pandoc.css"))))
-      (setq markdown-command
-            (mapconcat #'shell-quote-argument
-                       `("pandoc" "--toc" "--section-divs"
-                         "--css" ,(concat "file://" stylesheet)
-                         "--standalone" "-f" "markdown" "-t" "html5")
-                       " "))))
-#+end_src
-
-
-#+begin_src emacs-lisp
-(use-package markdown-toc
-     :after markdown-mode)
 #+end_src
 
 ** Rust
@@ -2488,13 +2452,6 @@ Then we can setup Emacs go mode
 (use-package toml-mode                  ; Toml for Cargo files
   :ensure t
   :after rust-mode)
-#+end_src
-
-** Smart Comments
-Smarter commenting for emacs
-#+begin_src emacs-lisp
-(use-package smart-comment
-  :bind ("M-;" . smart-comment))
 #+end_src
 
 ** Smartparens

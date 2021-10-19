@@ -941,6 +941,13 @@ Expand region increases the selected region by semantic units. Just keep pressin
     :mode "Dockerfile.*\\'")
 #+end_src
 
+*** Lua
+#+begin_src emacs-lisp
+(use-package lua-mode
+  :ensure t
+  :mode "\\.lua\\'")
+#+end_src
+
 *** Markdown
    GitHub Flavored Markdown by default for README.md files.
 #+begin_src emacs-lisp
